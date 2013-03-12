@@ -1,7 +1,8 @@
 class LineItem < ActiveRecord::Base
-  attr_accessible :cart_id, :product_id, :product, :quantity, :price
   belongs_to :cart
   belongs_to :product
+
+  attr_accessible :product_id, :cart_id, :quantity, :price
 
   def total_price
     price * quantity
