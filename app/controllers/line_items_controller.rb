@@ -1,4 +1,6 @@
 class LineItemsController < ApplicationController
+
+  after_filter :reset_access_counter
   # GET /line_items
   # GET /line_items.json
   def index
