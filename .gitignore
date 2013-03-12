@@ -16,3 +16,7 @@
 
 #rvmrc file
 /.rvmrc
+
+#sublimetext project file
+/*.sublime-project
+/*.sublime-workspace
