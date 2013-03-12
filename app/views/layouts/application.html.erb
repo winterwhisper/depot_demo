@@ -19,7 +19,10 @@
           <li><a href="http://www..../news">News</a></li>
           <li><a href="http://www..../contact">Contact</a></li>
         </ul>
-        <%= time_tag Time.now %>
+        <p><%= time_tag Time.now %></p>
+        <div id="cart">
+          <%= render @cart %>
+        </div>
       </div>
       <div id="main">
         <%= yield %>
