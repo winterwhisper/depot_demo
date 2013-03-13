@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
-  # GET /orders
-  # GET /orders.json
+  skip_before_filter :authorize, only: [:new, :create]
+
   def index
-    # @orders = Order.all
     @orders = Order.paginate page: params[:page], order: 'created_at desc', per_page: 10
     @cart = current_cart
 
@@ -12,8 +11,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
     @cart = current_cart
@@ -24,8 +21,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/new
-  # GET /orders/new.json
   def new
     @cart = current_cart
     if @cart.line_items.empty?
@@ -42,14 +37,11 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
     @cart = current_cart
   end
 
-  # POST /orders
-  # POST /orders.json
   def create
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(current_cart)
@@ -68,8 +60,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # PUT /orders/1
-  # PUT /orders/1.json
   def update
     @order = Order.find(params[:id])
 
@@ -84,8 +74,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
