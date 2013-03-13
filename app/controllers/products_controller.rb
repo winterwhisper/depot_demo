@@ -76,4 +76,11 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def who_bought
+    @product = Product.where("id=?", params[:id])
+    respond_to do |format|
+      format.atom
+    end
+  end
 end
