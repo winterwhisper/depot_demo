@@ -1,15 +1,21 @@
 Depot::Application.routes.draw do
+  # resources :sessions, :only => [ :new, :create, :destroy ]
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
   resources :users
-
-
   resources :orders
+  resources :line_items
   resources :carts
   resources :products do
     member do
       get 'who_bought'
     end
   end
-  resources :line_items
+  get "admin/index"
+  get "store/index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
