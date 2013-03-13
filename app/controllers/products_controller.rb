@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +25,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @cart = current_cart
 
     respond_to do |format|
       format.html # new.html.erb

@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.paginate page: params[:page], order: 'created_at desc', per_page: 10
-    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +12,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @cart = current_cart
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,7 +37,7 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    @cart = current_cart
+    @payment_types = PaymentType.payment_types
   end
 
   def create
@@ -53,7 +51,6 @@ class OrdersController < ApplicationController
         format.html { redirect_to store_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        @cart = current_cart
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end

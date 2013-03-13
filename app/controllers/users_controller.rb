@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.order(:name)
-    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +25,6 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @cart = current_cart
 
     respond_to do |format|
       format.html # new.html.erb
