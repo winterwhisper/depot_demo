@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +17,7 @@ class ProductsController < ApplicationController
       redirect_to store_url, notice: 'Invalid product'
     else
       respond_to do |format|
+        @cart = current_cart
         format.html # show.html.erb
         format.json { render json: @product }
       end
@@ -24,6 +26,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @cart = current_cart
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,6 +36,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @cart = current_cart
   end
 
   def create

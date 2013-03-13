@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 group :development do
   gem 'quiet_assets'
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 # Gems used only for assets and not required

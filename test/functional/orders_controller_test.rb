@@ -21,8 +21,9 @@ class OrdersControllerTest < ActionController::TestCase
   test "should get new" do
     cart = Cart.create
     session[:cart_id] = cart.id
-    LineItem.create(cart: cart, product: products(:ruby))
-    
+    # LineItem.create(cart: cart, product: products(:ruby)) #will raise ActiveModel::MassAssignmentSecurity::Error
+    line_item = LineItem.create(cart_id: cart.id, product_id: products(:ruby).id, price: products(:ruby).price)
+
     get :new
     assert_response :success
   end

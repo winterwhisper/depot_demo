@@ -3,6 +3,7 @@ class LineItemsController < ApplicationController
 
   def index
     @line_items = LineItem.all
+    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +18,7 @@ class LineItemsController < ApplicationController
       logger.error "Attempt to access invalid line item #{params[:id]}"
       redirect_to store_url, notice: 'Invalid line item'
     else
+      @cart = current_cart
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @line_item }
@@ -26,6 +28,7 @@ class LineItemsController < ApplicationController
 
   def new
     @line_item = LineItem.new
+    @cart = current_cart
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +38,7 @@ class LineItemsController < ApplicationController
 
   def edit
     @line_item = LineItem.find(params[:id])
+    @cart = current_cart
   end
 
   def create

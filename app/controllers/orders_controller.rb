@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
+    @cart = current_cart
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,6 +43,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
+    @cart = current_cart
   end
 
   # POST /orders
