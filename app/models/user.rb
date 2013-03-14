@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :password_digest, :password, :password_confirmation
-  after_destroy :ensure_an_admin_remains
-
-  validates :name, presence: true, uniqueness: true
   has_secure_password
+  validates :name, presence: true, uniqueness: true
+  after_destroy :ensure_an_admin_remains
+  before_create :generate_token(:auth_token)
 
   private
   
@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
     if User.count.zero?
       raise "Can't delete last user"
     end
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
   end
 end
 
