@@ -33,6 +33,8 @@ GEM
     bootstrap-sass-rails (2.3.1.0)
       railties (>= 3.1.0)
       sass-rails (>= 3.1.0)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     builder (3.0.4)
     chunky_png (1.2.7)
     coderay (1.0.9)
@@ -133,6 +135,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass-rails
+  bootstrap-will_paginate
   coffee-rails (~> 3.2.1)
   compass-rails
   font-awesome-sass-rails
