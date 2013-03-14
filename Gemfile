@@ -31,6 +31,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'simple_form'
+
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 
