@@ -6,6 +6,9 @@ Depot::Application.routes.draw do
     delete 'logout' => :destroy
   end
   resources :users
+  controller :users do
+    get 'signup' => :new
+  end
   resources :orders
   resources :line_items
   resources :carts
