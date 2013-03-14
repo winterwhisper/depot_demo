@@ -16,6 +16,8 @@ module ApplicationHelper
       'editing'
     when 'show'
       'showing'
+    else
+      'other'
     end
     entity = params[:action] == 'index' ? params[:controller] : params[:controller].singularize
     [ action.capitalize, entity.capitalize ].join(" ")
