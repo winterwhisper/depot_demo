@@ -9,16 +9,22 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+    <% if @orders.empty? %>
       <tr>
-        <td><%= order.name %></td>
-        <td><%= order.address %></td>
-        <td><%= order.email %></td>
-        <td><%= order.pay_type %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td colspan='6' style='text-align: center'>no orders</td>
       </tr>
+    <% else %>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.name %></td>
+          <td><%= order.address %></td>
+          <td><%= order.email %></td>
+          <td><%= order.pay_type %></td>
+          <td><%= link_to 'Show', order %></td>
+          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
