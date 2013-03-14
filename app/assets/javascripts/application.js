@@ -15,4 +15,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-$('#side').affix()
+if($('#side') != null) {
+  $('#side').affix();
+}
