@@ -1,9 +1,6 @@
 <% if notice %>
   <p id="notice"><%= notice %></p>
 <% end %>
-<% if session[:count] > 5 %>
-  <p>You have access this page <%= pluralize(session[:count], "count") %>.</p>
-<% end %>
 <h1>Your Pragmatic Catalog</h1>
 <div id='list'>
   <% @products.each do |product| %>
