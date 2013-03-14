@@ -5,3 +5,12 @@ class PaymentType < ActiveRecord::Base
     PaymentType.select(:payment_type).map(&:payment_type)
   end
 end
+
+# == Schema Information
+#
+# Table name: payment_types
+#
+#  id           :integer          not null, primary key
+#  payment_type :string(255)
+#
+

@@ -8,3 +8,12 @@ one:
   payment_type: 'Check'
 two:
   payment_type: 'Credit card'
+
+# == Schema Information
+#
+# Table name: payment_types
+#
+#  id           :integer          not null, primary key
+#  payment_type :string(255)
+#
+
