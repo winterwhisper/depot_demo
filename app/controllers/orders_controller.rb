@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
     end
     
     @order = Order.new
-    @payment_types = PaymentType.payment_types
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,7 +36,6 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    @payment_types = PaymentType.payment_types
   end
 
   def create

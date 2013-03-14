@@ -6,13 +6,17 @@ class Order < ActiveRecord::Base
   # PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
 
   validates :name, :address, :email, presence: true
-  validates :pay_type, :inclusion =>{ :in => PaymentType.payment_types }
+  validates :pay_type, :inclusion =>{ :in => Proc.new { Settings.payment_types.map { |k, v| [v] }.flatten! } }
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
       item.cart_id = nil
       line_items << item
     end
+  end
+
+  def self.payment_types
+    Settings.payment_types.map { |k, v| [k, v] }
   end
 
 end

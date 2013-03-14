@@ -15,7 +15,7 @@
   <%= f.input :name %>
   <%= f.input :address, :input_html => { :rows => 3 } %>
   <%= f.input :email %>
-  <%= f.input :pay_type, :required => true, :as => :select, :collection => @payment_types, :prompt => 'Select a payment method' %>
+  <%= f.input :pay_type, :required => true, :as => :select, :collection => payment_types, :prompt => 'Select a payment method' %>
   <div class='control-group'>
     <div class='controls'>
       <%= f.button :submit, 'Place Order' %>
