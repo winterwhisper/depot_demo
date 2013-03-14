@@ -15,8 +15,9 @@ Product.create(title: 'CoffeeScript(1st)',
               shows you how to hold onto all the power and flexibility of JavaScript
               while writing clearer, cleaner, and safer code.
                   </p>}, 
-               image_url:   'cs.jpg',    
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
                price: 36.00)
+
 Product.create(title: 'Programming Ruby 1.9 & 2.0(1st)',
                description:
                 %{<p>
@@ -24,7 +25,7 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(1st)',
                     out there. If you need to get working programs delivered fast,
                     you should add Ruby to your toolbox.
                   </p>},
-               image_url: 'ruby.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
                price: 49.95)
 Product.create(title: 'Rails Test Prescriptions(1st)',
                description: 
@@ -36,7 +37,7 @@ Product.create(title: 'Rails Test Prescriptions(1st)',
                     procedures for Rails 2 and Rails 3, and introduces popular add-ons,
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
-               image_url: 'rtp.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
                price: 34.95)
 Product.create(title: 'CoffeeScript(2nd)',
                description: 
@@ -47,7 +48,7 @@ Product.create(title: 'CoffeeScript(2nd)',
               shows you how to hold onto all the power and flexibility of JavaScript
               while writing clearer, cleaner, and safer code.
                   </p>}, 
-               image_url:   'cs.jpg',    
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
                price: 36.00)
 Product.create(title: 'Programming Ruby 1.9 & 2.0(2nd)',
                description:
@@ -56,7 +57,7 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(2nd)',
                     out there. If you need to get working programs delivered fast,
                     you should add Ruby to your toolbox.
                   </p>},
-               image_url: 'ruby.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
                price: 49.95)
 Product.create(title: 'Rails Test Prescriptions(2nd)',
                description: 
@@ -68,7 +69,7 @@ Product.create(title: 'Rails Test Prescriptions(2nd)',
                     procedures for Rails 2 and Rails 3, and introduces popular add-ons,
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
-               image_url: 'rtp.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
                price: 34.95)
 Product.create(title: 'CoffeeScript(3rd)',
                description: 
@@ -79,7 +80,7 @@ Product.create(title: 'CoffeeScript(3rd)',
               shows you how to hold onto all the power and flexibility of JavaScript
               while writing clearer, cleaner, and safer code.
                   </p>}, 
-               image_url:   'cs.jpg',    
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
                price: 36.00)
 Product.create(title: 'Programming Ruby 1.9 & 2.0(3rd)',
                description:
@@ -88,7 +89,7 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(3rd)',
                     out there. If you need to get working programs delivered fast,
                     you should add Ruby to your toolbox.
                   </p>},
-               image_url: 'ruby.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
                price: 49.95)
 Product.create(title: 'Rails Test Prescriptions(3rd)',
                description: 
@@ -100,7 +101,7 @@ Product.create(title: 'Rails Test Prescriptions(3rd)',
                     procedures for Rails 2 and Rails 3, and introduces popular add-ons,
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
-               image_url: 'rtp.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
                price: 34.95)
 Product.create(title: 'CoffeeScript(4th)',
                description: 
@@ -111,7 +112,7 @@ Product.create(title: 'CoffeeScript(4th)',
               shows you how to hold onto all the power and flexibility of JavaScript
               while writing clearer, cleaner, and safer code.
                   </p>}, 
-               image_url:   'cs.jpg',    
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
                price: 36.00)
 Product.create(title: 'Programming Ruby 1.9 & 2.0(4th)',
                description:
@@ -120,7 +121,7 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(4th)',
                     out there. If you need to get working programs delivered fast,
                     you should add Ruby to your toolbox.
                   </p>},
-               image_url: 'ruby.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
                price: 49.95)
 Product.create(title: 'Rails Test Prescriptions(4th)',
                description: 
@@ -132,5 +133,5 @@ Product.create(title: 'Rails Test Prescriptions(4th)',
                     procedures for Rails 2 and Rails 3, and introduces popular add-ons,
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
-               image_url: 'rtp.jpg',
+               image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
                price: 34.95)
