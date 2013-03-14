@@ -16,7 +16,7 @@
       <div id="columns" class='row'>
         <div class='span8'>
           <div id="main">
-            <% if params[:controller] != "store" and params[:action] != 'index' %>
+            <% unless params[:controller] == "store" && params[:action] == 'index' %>
               <div class='title'>
                   <h3>
                     <%= page_title %>
