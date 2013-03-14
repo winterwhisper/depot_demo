@@ -1,4 +1,5 @@
-<%= form_for(@order) do |f| %>
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %>
@@ -10,23 +11,14 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, size: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_area :address, rows: 3, cols: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, size: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_type %><br />
-    <%= f.select :pay_type, @payment_types, prompt: 'Select a payment method' %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Place Order' %>
+
+  <%= f.input :name %>
+  <%= f.input :address, :input_html => { :rows => 3 } %>
+  <%= f.input :email %>
+  <%= f.input :pay_type, :required => true, :as => :select, :collection => @payment_types, :prompt => 'Select a payment method' %>
+  <div class='control-group'>
+    <div class='controls'>
+      <%= f.button :submit, 'Place Order' %>
+    </div>
   </div>
 <% end %>

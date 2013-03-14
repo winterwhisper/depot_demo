@@ -1,7 +1,14 @@
+<div class='title'>
+  <h3>Your Pragmatic Catalog</h3>
+</div> 
+
 <% if notice %>
-  <p id="notice"><%= notice %></p>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= notice %>
+  </div>
 <% end %>
-<h1>Your Pragmatic Catalog</h1>
+
 <div id='list'>
   <% @products.each do |product| %>
     <div class="entry">

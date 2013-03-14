@@ -4,12 +4,8 @@
 .store {
   h1 {
     margin: 0;
-    /* padding-bottom: 0.5em; */
-    font: 200% sans-serif;
-    color: #226;
-    /* border-bottom: 3px dotted #77d; */
+    font: 180% sans-serif;
   }
-  /* An entry in the store catalog */
   #list {
     margin-top: 2em;
     .entry {
@@ -20,11 +16,13 @@
       &:last-child {
         border-bottom: 0px;
       }
+
       img {
         width: 80px;
         margin: 14px 5px 5px;
         position: absolute;
       }
+
       h3 {
         font-size: 140%;
         font-family: sans-serif;
@@ -33,6 +31,7 @@
         margin-bottom: 2px;
         /* color: #227; */
       }
+
       p, div.price_line {
         margin-left: 100px;
         margin-top: 0.5em;
@@ -41,6 +40,7 @@
           display: inline;
         }
       }
+      
       .price {
         color: #530;
         font-weight: bold;

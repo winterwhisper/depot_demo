@@ -16,27 +16,35 @@
       <div id="columns" class='row'>
         <div class='span8'>
           <div id="main">
+            <div class='title'>
+              <h3>
+                <%= page_title %>
+              </h3>
+            </div>
             <%= yield %>
           </div>
         </div>
         <div class='span4'>
-          <div id="side">
-            <!-- <ul>
-              <li><a href="http://www....">Home</a></li>
-              <li><a href="http://www..../faq">Questions</a></li>
-              <li><a href="http://www..../news">News</a></li>
-              <li><a href="http://www..../contact">Contact</a></li>
-            </ul> -->
+          <div id="side" data-spy="affix">
+            <% unless session[:user_id] %>
+              <div id='user_links'>
+                <%= link_to 'signup', signup_path %> or
+                <%= link_to 'login', login_path %>
+              </div>
+              <% else %>
+              <div id='user_links'>
+                <%= link_to 'Logout', logout_path, method: :delete %>
+              </div>
+            <% end %>
             <% if session[:count] > 5 %>
               <p id='counter'>You have access this page <%= pluralize(session[:count], "count") %>.</p>
             <% end %>
             <% if session[:user_id] %>
-              <ul>
+              <ul class="unstyled">
                 <li><%= link_to 'Orders', orders_path %></li>
                 <li><%= link_to 'Products', products_path %></li>
                 <li><%= link_to 'Users', users_path %></li>
               </ul>
-              <%= button_to 'Logout', logout_path, method: :delete %>
             <% end %>
             <p><%= time_tag Time.now %></p>
             <% if @cart %>
