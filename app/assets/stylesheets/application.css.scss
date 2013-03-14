@@ -13,10 +13,6 @@
  *= require _font-awesome
  *= require_tree .
  */
-.container {
-  min-height: 700px;
-}
-
 .title {
   color: #dfd;
   background: #141;
@@ -51,6 +47,7 @@
 
 #columns {
   #main {
+    min-height: 600px;
     legend {
       color: #dfd;
       background: #141;
