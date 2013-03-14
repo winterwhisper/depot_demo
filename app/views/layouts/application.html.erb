@@ -16,11 +16,13 @@
       <div id="columns" class='row'>
         <div class='span8'>
           <div id="main">
-            <div class='title'>
-              <h3>
-                <%= page_title %>
-              </h3>
-            </div>
+            <% if params[:controller] != "store" and params[:action] != 'index' %>
+              <div class='title'>
+                  <h3>
+                    <%= page_title %>
+                  </h3>
+              </div>
+            <% end %>
             <%= yield %>
           </div>
         </div>
