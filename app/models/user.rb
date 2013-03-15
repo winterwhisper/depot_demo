@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # attr_accessor :auth_token
-  attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token
+  attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token, :email
   has_secure_password
   validates :name, presence: true, uniqueness: true
   after_destroy :ensure_an_admin_remains
@@ -32,5 +32,6 @@ end
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  auth_token      :string(255)
+#  email           :string(255)
 #
 

@@ -16,5 +16,6 @@ end
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  auth_token      :string(255)
+#  email           :string(255)
 #
 
