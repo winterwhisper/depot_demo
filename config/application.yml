@@ -3,6 +3,10 @@ defaults: &defaults
     Check: 0
     Credit card: 1
     Purchase order: 2
+  roles:
+    Master: 4
+    Seller: 2
+    Normal: 1
 
 development:
   <<: *defaults

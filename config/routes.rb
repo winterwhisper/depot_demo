@@ -20,6 +20,7 @@ Depot::Application.routes.draw do
   end
   get "admin/index"
   get "store/index"
+  match '/' => 'admin#index', :constraints => { :subdomain => 'console' }
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

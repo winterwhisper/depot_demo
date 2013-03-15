@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # attr_accessor :auth_token
   attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token, :email, 
-                  :password_reset_token, :password_reset_sent_at
+                  :password_reset_token, :password_reset_sent_at, :role
   has_secure_password
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
+  end
+
+  def self.roles
+    Settings.roles
   end
 
   private
