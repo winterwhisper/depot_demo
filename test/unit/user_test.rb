@@ -15,5 +15,6 @@ end
 #  password_digest :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  auth_token      :string(255)
 #
 
