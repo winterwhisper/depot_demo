@@ -20,3 +20,6 @@
 #sublimetext project file
 /*.sublime-project
 /*.sublime-workspace
+
+#image file
+/public/uploads/*
