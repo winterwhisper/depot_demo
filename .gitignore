@@ -23,3 +23,6 @@
 
 #image file
 /public/uploads/*
+
+#mailer setup file
+/config/initializers/setup_mail.rb
