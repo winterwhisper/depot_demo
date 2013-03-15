@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-  # attr_accessor :auth_token
+  # attr_accessor :is_master, :is_seller, :is_normal
   attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token, :email, 
-                  :password_reset_token, :password_reset_sent_at
+                  :password_reset_token, :password_reset_sent_at, :role#, :is_master, :is_seller, :is_normal
   has_secure_password
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  validates :role, :inclusion =>{ :in => Proc.new { Settings.roles.values } }
   after_destroy :ensure_an_admin_remains
   before_create {|controller| controller.generate_token(:auth_token) }
 
@@ -19,6 +20,10 @@ class User < ActiveRecord::Base
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
+  end
+
+  def self.roles
+    Settings.roles.map { |k, v| [k, v] }
   end
 
   private

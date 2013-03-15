@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :authorize
+  # before_filter :authorize
   helper_method :current_user
 
   protected
@@ -10,9 +10,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
-  def authorize
+  def authorize(role)
     if current_user.nil?
       redirect_to login_url, notice: "Please log in"
+    else
+      if self.role < Setting.roles.fetch(role.Capitalize)
+        redirect_to admin_url, notice: "You can`t access this page."
+      end
     end
   end
 
