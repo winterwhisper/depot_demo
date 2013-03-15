@@ -16,11 +16,21 @@
       <div id="columns" class='row'>
         <div class='span8'>
           <div id="main">
-            <% unless params[:controller] == "store" && params[:action] == 'index' %>
               <div class='title'>
                   <h3>
                     <%= page_title %>
                   </h3>
+              </div>
+            <% if notice %>
+              <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= notice %>
+              </div>
+            <% end %>
+            <% if alert %>
+              <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= alert %>
               </div>
             <% end %>
             <%= yield %>

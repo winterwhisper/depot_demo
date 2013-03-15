@@ -1,12 +1,6 @@
 <div class="depot_form">
   <%= form_tag({}, { :class => 'form-horizontal' }) do %>
     <fieldset>
-      <% if flash[:alert] %>
-        <div class="alert alert-error">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
       <div class="control-group">
         <%= label_tag :name, 'Name', :class => "control-label" %>
         <div class='controls'>
