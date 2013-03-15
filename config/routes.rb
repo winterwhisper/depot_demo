@@ -1,6 +1,6 @@
 Depot::Application.routes.draw do
   # resources :sessions, :only => [ :new, :create, :destroy ]
-  resources :password_resets
+  resources :password_resets, :only => [ :new, :create, :edit, :update ]
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
