@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :password_digest, :password, :password_confirmation
+  # attr_accessor :auth_token
+  attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token
   has_secure_password
   validates :name, presence: true, uniqueness: true
   after_destroy :ensure_an_admin_remains
-  before_create :generate_token(:auth_token)
+  before_create :generate_token#(:auth_token)
 
   private
   
@@ -13,10 +14,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def generate_token(column)
+  def generate_token#(column)
     begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
+      #self[column] = SecureRandom.urlsafe_base64
+      self.auth_token = SecureRandom.urlsafe_base64
+    end while User.exists?("auth_token" => self.auth_token)#User.exists?(column => self[column])
   end
 end
 
@@ -29,5 +31,6 @@ end
 #  password_digest :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  auth_token      :string(255)
 #
 

@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def current_user
+    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
+  end
+  helper_method :current_user
+
   def authorize
-    unless User.find_by_id(session[:user_id])
+    if current_user.nil?
       redirect_to login_url, notice: "Please log in"
     end
   end
