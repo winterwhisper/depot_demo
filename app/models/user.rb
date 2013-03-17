@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # attr_accessor :is_master, :is_seller, :is_normal
   attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token, :email, 
-                  :password_reset_token, :password_reset_sent_at, :role#, :is_master, :is_seller, :is_normal
+                  :password_reset_token, :password_reset_sent_at, :role
   has_secure_password
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
