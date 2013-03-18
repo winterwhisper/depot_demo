@@ -1,41 +1,31 @@
 Depot::Application.routes.draw do
-  get "home/index"
+  constraints :subdomain => "console" do
+    match '/' => 'console/home#index', as: :console
+    get "home/index"
+    resources :products, :module => "console", as: :console_products
+    resources :orders, :module => "console", as: :console_orders
+    resources :users, :module => "console", as: :console_users
+  end
 
-  # resources :sessions, :only => [ :new, :create, :destroy ]
   resources :password_resets, :only => [ :new, :create, :edit, :update ]
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
-  resources :users
-  controller :users do
-    get 'signup' => :new
-  end
-  resources :orders
-  resources :line_items
-  resources :carts
+  resources :users, :orders, :line_items, :carts
   resources :products do
     member do
       get 'who_bought'
     end
   end
-  # get "admin/index"
-  get "store/index"
 
-  constraints :subdomain => "console" do
-    match '/' => 'console/home#index'
-    get "home/index"
-    # namespace :console do 
-    #   get '/' => 'home#index'
-    # end
+  controller :users do
+    get 'signup' => :new
   end
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  get "store/index"
   # match '/' => 'console/home#index', :constraints => { :subdomain => 'console' }
-  
-
-
-
-
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
