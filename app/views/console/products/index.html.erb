@@ -1,0 +1,24 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>description</th>
+      <th colspan='2'>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for product in @products %>
+      <tr>
+        <td><%= image_tag product.image_url %></td>
+        <td><%= truncate(strip_tags(product.description), length: 80) %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_console_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @products %>
+
+<%= link_to 'New Product', new_console_product_path %>
