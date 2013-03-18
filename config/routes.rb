@@ -2,9 +2,11 @@ Depot::Application.routes.draw do
   constraints :subdomain => "console" do
     match '/' => 'console/home#index', as: :console
     get "home/index"
-    resources :products, :module => "console", as: :console_products
-    resources :orders, :module => "console", as: :console_orders
-    resources :users, :module => "console", as: :console_users
+    namespace :console, :path => '' do
+      resources :products
+      resources :orders
+      resources :users
+    end
 
     controller :session, :module => "console" do
       get 'login' => :new, as: :console_login
