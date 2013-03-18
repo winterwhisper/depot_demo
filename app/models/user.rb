@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
-  # attr_accessor :is_master, :is_seller, :is_normal
   attr_accessible :name, :password_digest, :password, :password_confirmation, :auth_token, :email, 
                   :password_reset_token, :password_reset_sent_at, :role
   has_secure_password
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :role, :inclusion =>{ :in => Proc.new { Settings.roles.values } }
+  validates :role, :inclusion => { :in => Proc.new { Settings.roles.values } }
   after_destroy :ensure_an_admin_remains
-  before_create {|controller| controller.generate_token(:auth_token) }
+  before_create { |controller| controller.generate_token(:auth_token) }
+
+  SUPER_USERS = [2, 3]
 
   def generate_token(column)
     begin
