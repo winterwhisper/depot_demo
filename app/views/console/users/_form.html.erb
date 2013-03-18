@@ -1,10 +1,16 @@
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for @user, :html => { :class => 'form-horizontal console-form' } do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <%= f.input :name %>
+  <%= f.input :password, required: true %>
+  <%= f.input :password_confirmation, required: true %>
+  <%= f.input :email %>
+  <%= f.input :role do %>
+    <%= f.select :role, roles, prompt: "Please selete a role", required: true %>
+  <% end %>
+  <div class="control-group">
+    <div class='controls'>
+      <%= f.button :submit %>
+    </div>
   </div>
 <% end %>

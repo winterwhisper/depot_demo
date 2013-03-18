@@ -1,2 +1,28 @@
-<h1>Home</h1>
-<hr />
+<div class="page-header">
+  <h1>Home</h1>
+</div>
+
+<center id='home-title'>System Info</center>
+
+<div id='sys-details'>
+  <div id='detail-row'>
+    <div class='detail-block'>
+      <i class="icon-file-alt"></i>
+      <div class='detail-description'>
+        <%= @orders_count %> orders
+      </div>
+    </div>
+    <div class='detail-block'>
+      <i class="icon-gift"></i>
+      <div class='detail-description'>
+        <%= @products_count %> products
+      </div>
+    </div>
+    <div class='detail-block'>
+      <i class="icon-user"></i>
+      <div class='detail-description'>
+        <%= @users_count %> users
+      </div>
+    </div>
+  </div>
+</div>

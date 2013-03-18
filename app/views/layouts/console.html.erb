@@ -32,7 +32,15 @@
               <% else %>
                 <li>
               <% end %>
-                <%= link_to "Products", console_products_path(:host => with_subdomain('console')) %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <%= link_to "Show Products", console_products_path(:host => with_subdomain('console')) %>
+                      <%= link_to "Create a new Product", new_console_product_path(:host => with_subdomain('console')) %>
+                    </li>
+                  </ul>
+                </li> 
               </li>
               <% if current_user.role > 2 %>
                 <% if params[:controller].split('/').last == 'users' %>
@@ -40,7 +48,15 @@
                 <% else %>
                   <li>
                 <% end %>
-                  <%= link_to "Users", console_users_path(:host => with_subdomain('console')) %>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <%= link_to "Show Users", console_users_path(:host => with_subdomain('console')) %>
+                        <%= link_to "Create a new User", new_console_user_path(:host => with_subdomain('console')) %>
+                      </li>
+                    </ul>
+                  </li>
                 </li>
               <% end %>
             </ul>
@@ -58,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class='container mt30'>
+    <div class='container mt30 min-h600'>
       <% if notice %>
         <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -72,6 +88,9 @@
         </div>
       <% end %>
       <%= yield %>
+    </div>
+    <div class="footer">
+      depot@2013
     </div>
   </body>
 </html>

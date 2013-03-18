@@ -1,6 +1,14 @@
-<h1>Editing console_product</h1>
+<div class="page-header">
+  <h1>Edit Product#<%= @product.id %></h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', console_products_path %>
+<ul class="inline action-links">
+  <li>
+    <%= link_to 'Show', @product %>
+  </li>
+  <li>
+    <%= link_to 'Back', console_products_path %>
+  </li>
+</ul>

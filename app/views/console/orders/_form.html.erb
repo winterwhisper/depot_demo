@@ -1,10 +1,13 @@
-<%= simple_form_for(@order) do |f| %>
+<%= simple_form_for @order, :html => { :class => 'form-horizontal console-form' } do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <%= f.input :name %>
+  <%= f.input :address, :input_html => { :rows => 3 } %>
+  <%= f.input :email %>
+  <%= f.input :pay_type, :required => true, :as => :select, :collection => payment_types, :prompt => 'Select a payment method' %>
+  <div class='control-group'>
+    <div class='controls'>
+      <%= f.button :submit, 'Save Order' %>
+    </div>
   </div>
 <% end %>

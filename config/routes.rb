@@ -3,9 +3,7 @@ Depot::Application.routes.draw do
     match '/' => 'console/home#index', as: :console
     get "home/index"
     namespace :console, :path => '' do
-      resources :products
-      resources :orders
-      resources :users
+      resources :products, :orders, :users
     end
 
     controller :session, :module => "console" do

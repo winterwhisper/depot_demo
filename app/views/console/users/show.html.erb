@@ -1,5 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>User#<%= @user.id %></h1>
+</div>
 
+<dl class="dl-horizontal description-list">
+  <dt>Name</dt>
+  <dd><%= @user.name %></dd>
+  <dt>Email</dt>
+  <dd><%= @user.email %></dd>
+  <dt>Role</dt>
+  <dd><%= role_name(@user.role) %></dd>
+  <dt>Create At</dt>
+  <dd><%= time_tag @user.created_at %></dd>
+  <dt>Update At</dt>
+  <dd><%= time_tag @user.updated_at %></dd>
+</dl>
 
-<%= link_to 'Edit', edit_console_user_path(@console_user) %> |
-<%= link_to 'Back', console_users_path %>
+<ul class="inline action-links">
+  <li>
+    <%= link_to 'Edit', edit_console_user_path(@user) %>
+  </li>
+  <li>
+    <%= link_to 'Back', console_users_path %>
+  </li>
+</ul>

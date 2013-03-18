@@ -1,5 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Product#<%= @product.id %></h1>
+</div>
 
+<dl class="dl-horizontal description-list">
+  <dt>Title</dt>
+  <dd><%= @product.title %></dd>
+  <dt>Description</dt>
+  <dd><%= strip_tags @product.description %></dd>
+  <dt>Image</dt>
+  <dd><%= image_tag @product.image_url, :size => "170x170" %></dd>
+  <dt>Price</dt>
+  <dd><%= @product.price %></dd>
+  <dt>Create At</dt>
+  <dd><%= time_tag @product.created_at %></dd>
+  <dt>Update At</dt>
+  <dd><%= time_tag @product.updated_at %></dd>
+</dl>
 
-<%= link_to 'Edit', edit_console_product_path(@product) %> |
-<%= link_to 'Back', console_products_path %>
+<ul class="inline action-links">
+  <li>
+    <%= link_to 'Edit', edit_console_product_path(@product) %>
+  </li>
+  <li>
+    <%= link_to 'Back', console_products_path %>
+  </li>
+</ul>

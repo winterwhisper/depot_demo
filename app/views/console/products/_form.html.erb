@@ -1,10 +1,15 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_form_for @product, :html => { :class => 'form-horizontal console-form', :multipart => true } do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <%= f.input :title %>
+  <%= f.input :description, :input_html => { :rows => 6 } %>
+  <%= image_tag(@product.image_url, :style => "margin: 0 0 20px 180px") if @product.image_url? %>
+  <%= f.input :image_url, :as => :file %>
+  <%= f.input :image_url_cache, :as => :hidden %>
+  <%= f.input :price, :as => :string, :required => true %>
+  <div class="control-group">
+    <div class='controls'>
+      <%= f.button :submit %>
+    </div>
   </div>
 <% end %>

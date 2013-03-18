@@ -1,5 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Order#<%= @order.id %></h1>
+</div>
 
+<dl class="dl-horizontal description-list">
+  <dt>Name</dt>
+  <dd><%= @order.name %></dd>
+  <dt>Address</dt>
+  <dd><%= @order.address %></dd>
+  <dt>Email</dt>
+  <dd><%= @order.email %></dd>
+  <dt>Payment Type</dt>
+  <dd><%= @order.pay_type %></dd>
+  <dt>Create At</dt>
+  <dd><%= time_tag @order.created_at %></dd>
+  <dt>Update At</dt>
+  <dd><%= time_tag @order.updated_at %></dd>
+</dl>
 
-<%= link_to 'Edit', edit_console_order_path(@order) %> |
-<%= link_to 'Back', console_orders_path %>
+<ul class="inline action-links">
+  <li>
+    <%= link_to 'Edit', edit_console_order_path(@order) %>
+  </li>
+  <li>
+    <%= link_to 'Back', console_orders_path %>
+  </li>
+</ul>
