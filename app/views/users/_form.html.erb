@@ -19,6 +19,9 @@
       <%= f.input :password, required: true %>
       <%= f.input :password_confirmation, required: true %>
       <%= f.input :email %>
+      <%= f.input :role do %>
+        <%= f.select :role, roles, prompt: "Please selete a role", required: true %>
+      <% end %>
       <div class="control-group">
         <div class='controls'>
           <%= f.button :submit %>
