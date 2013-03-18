@@ -1,0 +1,35 @@
+<div class='row'>
+  <div class='span8 offset2 mt100'>
+    <%= form_tag({}, { :class => 'form-horizontal', :id => 'console-login-form' }) do %>
+      <fieldset>
+        <legend>Depot Console</legend>
+        <div class="control-group">
+          <%= label_tag :name, 'Name', :class => "control-label" %>
+          <div class='controls'>
+            <%= text_field_tag :name, params[:name] %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= label_tag :password, 'Password', :class => "control-label" %>
+          <div class='controls'>
+            <%= password_field_tag :password, params[:password] %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= label_tag :remember_me, 'Remember me', :class => "control-label" %>
+          <div class='controls'>
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+          </div>
+        </div>
+        <div class="control-group" id="form-actions">
+          <div class='controls'>
+            <%= button_tag "Reset", :class => "btn", :type => "reset" %>
+            <%= submit_tag "Login", :class => "btn" %>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+
+    <% link_to 'Forgot password', new_password_reset_path %>
+  </div>
+</div>
