@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # before_filter :authorize
   helper_method :current_user
 
   protected
@@ -14,8 +13,8 @@ class ApplicationController < ActionController::Base
     if current_user.nil?
       redirect_to login_url, notice: "Please log in"
     else
-      if self.role < Setting.roles.fetch(role.Capitalize)
-        redirect_to admin_url, notice: "You can`t access this page."
+      if current_user.role < Settings.roles.fetch(role.capitalize)
+        redirect_to admin_index_url, notice: "You can`t access this page."
       end
     end
   end

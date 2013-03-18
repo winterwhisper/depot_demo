@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   after_filter :reset_access_counter
-  skip_before_filter :authorize, only: [ :create, :destroy ]
+  before_filter(except: [ :create, :destroy ]) { |c| c.authorize 'seller' }
 
   def index
     @line_items = LineItem.all

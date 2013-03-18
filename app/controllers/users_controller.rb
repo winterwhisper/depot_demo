@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-
-  skip_before_filter :authorize, :only => [ :new, :create ]
+  before_filter(except: [ :new, :create ]) { |c| c.authorize 'seller' }
 
   # GET /users
   # GET /users.json

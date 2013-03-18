@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       # session[:user_id] = user.id
       redirect_to admin_index_url, notice: "Logged in!"
     else
-      render login_url, alert: "Invalid user/password combination"
+      redirect_to login_url, alert: "Invalid user/password combination"
     end
   end
 
