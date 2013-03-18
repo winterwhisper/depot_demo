@@ -1,0 +1,2 @@
+module Console::OrdersHelper
+end

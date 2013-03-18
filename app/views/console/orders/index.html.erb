@@ -1,0 +1,28 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Payment Type</th>
+      <th colspan='2'>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for order in @orders %>
+      <tr>
+        <td><%= order.name %></td>
+        <td><%= order.address %></td>
+        <td><%= order.email %></td>
+        <td><%= order.pay_type %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_console_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @orders %>
+
+<%= link_to 'New Order', new_console_order_path %>
