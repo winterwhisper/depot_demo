@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     Settings.roles.map { |k, v| [k, v] }
   end
 
+  def self.role_name(value)
+    Settings.roles.key(value)
+  end
+
   private
   
   def ensure_an_admin_remains

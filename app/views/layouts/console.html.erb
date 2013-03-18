@@ -7,6 +7,71 @@
     <%= csrf_meta_tags %>
   </head>
   <body class='<%= 'admin_' + controller.controller_name %>'>
-    <%= yield %>
+    <div class="navbar navbar-static-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class='container'>
+          <%= link_to "Depot", "#", :class => 'brand' %>
+          <% if current_user %>
+            <ul class="nav">
+              <% if params[:controller].split('/').last == 'home' %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+                <%= link_to "Home", console_path(:host => with_subdomain('console')) %>
+              </li>
+              <% if params[:controller].split('/').last == 'orders' %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+                <%= link_to "Orders", console_orders_path(:host => with_subdomain('console')) %>
+              </li>
+              <% if params[:controller].split('/').last == 'products' %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+                <%= link_to "Products", console_products_path(:host => with_subdomain('console')) %>
+              </li>
+              <% if current_user.role > 2 %>
+                <% if params[:controller].split('/').last == 'users' %>
+                  <li class="active">
+                <% else %>
+                  <li>
+                <% end %>
+                  <%= link_to "Users", console_users_path(:host => with_subdomain('console')) %>
+                </li>
+              <% end %>
+            </ul>
+            <ul class='nav pull-right'>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to "Logout", console_logout_path(:host => with_subdomain('console')), :method => :delete %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class='container mt30'>
+      <% if notice %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= alert %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
