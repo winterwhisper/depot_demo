@@ -11,11 +11,11 @@
   <tbody>
     <% for product in @products %>
       <tr>
-        <td><%= image_tag product.image_url %></td>
-        <td><%= truncate(strip_tags(product.description), length: 80) %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_console_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= image_tag product.image_url, :size => "70x30" %></td>
+        <td class='valign-middle'><%= truncate(strip_tags(product.description), length: 80) %></td>
+        <td class='valign-middle'><%= link_to 'Show', product %></td>
+        <td class='valign-middle'><%= link_to 'Edit', edit_console_product_path(product) %></td>
+        <td class='valign-middle'><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
