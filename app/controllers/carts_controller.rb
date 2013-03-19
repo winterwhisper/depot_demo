@@ -1,14 +1,14 @@
 class CartsController < ApplicationController
-  before_filter(except: [:create, :update, :destroy]) { |c| c.authorize 'seller' }
+  # before_filter(except: [:create, :update, :destroy]) { |c| c.authorize 'seller' }
 
-  def index
-    @carts = Cart.all
+  # def index
+  #   @carts = Cart.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @carts }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @carts }
+  #   end
+  # end
 
   # def show
   #   begin
@@ -24,14 +24,14 @@ class CartsController < ApplicationController
   #   end
   # end
 
-  def new
-    @cart = Cart.new
+  # def new
+  #   @cart = Cart.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @cart }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.json { render json: @cart }
+  #   end
+  # end
 
   # def edit
   #   @cart = Cart.find(params[:id])

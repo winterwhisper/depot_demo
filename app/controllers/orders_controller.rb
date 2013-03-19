@@ -1,23 +1,23 @@
 class OrdersController < ApplicationController
-  before_filter(except: [:new, :create]) { |c| c.authorize 'seller' }
+  # before_filter(except: [:new, :create]) { |c| c.authorize 'seller' }
 
-  def index
-    @orders = Order.paginate(:page => params[:page], :order => 'created_at desc', :per_page => 10)
+  # def index
+  #   @orders = Order.paginate(:page => params[:page], :order => 'created_at desc', :per_page => 10)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @orders }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @orders }
+  #   end
+  # end
 
-  def show
-    @order = Order.find(params[:id])
+  # def show
+  #   @order = Order.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @order }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #     format.json { render json: @order }
+  #   end
+  # end
 
   def new
     @cart = current_cart
@@ -34,9 +34,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-    @order = Order.find(params[:id])
-  end
+  # def edit
+  #   @order = Order.find(params[:id])
+  # end
 
   def create
     @order = Order.new(params[:order])
@@ -55,27 +55,27 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    @order = Order.find(params[:id])
+  # def update
+  #   @order = Order.find(params[:id])
 
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @order.update_attributes(params[:order])
+  #       format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: "edit" }
+  #       format.json { render json: @order.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
+  # def destroy
+  #   @order = Order.find(params[:id])
+  #   @order.destroy
 
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to orders_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
 end

@@ -15,5 +15,6 @@ class ProductSweeper < ActionController::Caching::Sweeper
     expire_fragment(:products_count)
     expire_fragment(:all_products)
     expire_fragment("product-#{product.id}")
+    expire_fragment(:store_list)
   end
 end

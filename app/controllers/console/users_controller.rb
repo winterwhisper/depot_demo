@@ -38,7 +38,7 @@ class Console::UsersController < Console::ConsoleController
   end
 
   def create
-    @user = User.new(params[:console_user])
+    @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
@@ -55,7 +55,7 @@ class Console::UsersController < Console::ConsoleController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:console_user])
+      if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -67,7 +67,12 @@ class Console::UsersController < Console::ConsoleController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    begin
+      @user.destroy
+      flash[:notice] = "User #{@user.name} deleted"
+    rescue Exception => e
+      flash[:notice] = e.message
+    end
 
     respond_to do |format|
       format.html { redirect_to console_users_url }

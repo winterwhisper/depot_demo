@@ -14,13 +14,18 @@ class Console::ProductsController < Console::ConsoleController
   end
 
   def show
-    unless fragment_exist? "product-#{params[:id]}"
-      @product = Product.find(params[:id])
-    end
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
+    begin
+      unless fragment_exist? "product-#{params[:id]}"
+        @product = Product.find(params[:id])
+      end
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid product #{params[:id]}"
+      redirect_to store_url, notice: 'Invalid product'
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @product }
+      end
     end
   end
 
@@ -38,7 +43,7 @@ class Console::ProductsController < Console::ConsoleController
   end
 
   def create
-    @product = Product.new(params[:console_product])
+    @product = Product.new(params[:product])
 
     respond_to do |format|
       if @product.save
@@ -55,7 +60,7 @@ class Console::ProductsController < Console::ConsoleController
     @product = Product.find(params[:id])
 
     respond_to do |format|
-      if @product.update_attributes(params[:console_product])
+      if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else

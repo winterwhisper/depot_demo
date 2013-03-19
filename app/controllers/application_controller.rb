@@ -27,12 +27,12 @@ class ApplicationController < ActionController::Base
     cart
   end
 
-  def count_access_times
-    session[:count].nil? ? session[:count] = 1 : session[:count] += 1
-  end
+  # def count_access_times
+  #   session[:count].nil? ? session[:count] = 1 : session[:count] += 1
+  # end
 
-  def reset_access_counter
-    session[:count] = 0
-  end
+  # def reset_access_counter
+  #   session[:count] = 0
+  # end
 
 end

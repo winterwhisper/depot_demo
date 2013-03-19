@@ -1,30 +1,30 @@
 class LineItemsController < ApplicationController
-  after_filter :reset_access_counter
+  # after_filter :reset_access_counter
   before_filter(except: [ :create, :destroy ]) { |c| c.authorize 'seller' }
 
-  def index
-    @line_items = LineItem.all
+  # def index
+  #   @line_items = LineItem.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @line_items }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @line_items }
+  #   end
+  # end
 
-  def show
-    begin
-      @line_item = LineItem.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      logger.error "Attempt to access invalid line item #{params[:id]}"
-      redirect_to store_url, notice: 'Invalid line item'
-    else
-      @cart = current_cart
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @line_item }
-      end
-    end
-  end
+  # def show
+  #   begin
+  #     @line_item = LineItem.find(params[:id])
+  #   rescue ActiveRecord::RecordNotFound
+  #     logger.error "Attempt to access invalid line item #{params[:id]}"
+  #     redirect_to store_url, notice: 'Invalid line item'
+  #   else
+  #     @cart = current_cart
+  #     respond_to do |format|
+  #       format.html # show.html.erb
+  #       format.json { render json: @line_item }
+  #     end
+  #   end
+  # end
 
   def new
     @line_item = LineItem.new
@@ -35,9 +35,9 @@ class LineItemsController < ApplicationController
     end
   end
 
-  def edit
-    @line_item = LineItem.find(params[:id])
-  end
+  # def edit
+  #   @line_item = LineItem.find(params[:id])
+  # end
 
   def create
     @cart = current_cart
@@ -56,19 +56,19 @@ class LineItemsController < ApplicationController
     end
   end
 
-  def update
-    @line_item = LineItem.find(params[:id])
+  # def update
+  #   @line_item = LineItem.find(params[:id])
 
-    respond_to do |format|
-      if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @line_item.update_attributes(params[:line_item])
+  #       format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: "edit" }
+  #       format.json { render json: @line_item.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def destroy
     @line_item = LineItem.find(params[:id])
