@@ -1,14 +1,49 @@
-<div id='list'>
-  <% @products.each do |product| %>
-    <div class="entry">
-      <%= image_tag(product.image_url) %>
-      <h3><%= product.title %></h3>
-      <%= sanitize(product.description) %>
-      <div class="price_line">
-        <span class="price"><%= number_to_currency(product.price) %></span>
-        <%= button_to 'Add to Cart', line_items_path(:product_id => product), :remote => true, :class => 'btn btn-small' %>
+<div class='row'>
+  <div class='span2'>
+    <div id='store_side' data-spy="affix">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Books</a></li>
+        <li><a href="#">Foods</a></li>
+        <li><a href="#">Clothes</a></li>
+      </ul>
+      <div id='user_links'>
+        <ul class="unstyled">
+          <% if current_user.nil? %>
+            <li>
+              <%= link_to 'Sign up', signup_url %>
+            </li>
+            <li>
+              <%= link_to 'Login', login_url %>
+            </li>
+          <% else %>
+              <li>
+                Hello <%= current_user.name %>!
+              </li>
+              <li>
+                <%= link_to 'Logout', logout_url, :method => :delete %>
+              </li>
+          <% end %>
+          <li>
+            <%= link_to "Checkout", new_order_path %>
+          </li>
+        </ul>
       </div>
     </div>
-  <% end %>
-  <%= will_paginate @products %>
+  </div>
+  <div class='span10'>
+    <div id='list'>
+      <% @products.each do |product| %>
+        <div class="entry">
+          <%= image_tag(product.image_url) %>
+          <h3><%= product.title %></h3>
+          <%= sanitize(product.description) %>
+          <div class="price_line">
+            <span class="price"><%= number_to_currency(product.price) %></span>
+            <%= button_to 'Add to Cart', line_items_path(:product_id => product), :class => 'btn btn-small' %>
+          </div>
+        </div>
+      <% end %>
+    <%= will_paginate @products %>
+  </div>
+  </div>
 </div>

@@ -15,6 +15,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-if($('#side') != null) {
-  $('#side').affix();
+if($('#store_side_nav') != null) {
+  $('#store_side_nav').affix();
 }
