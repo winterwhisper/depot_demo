@@ -3,7 +3,7 @@ class Console::ProductsController < Console::ConsoleController
   cache_sweeper :product_sweeper, :only => [ :create, :update, :destroy ]
 
   def index
-    unless fragment_exist? :all_products
+    unless fragment_exist?("all_products-page#{params[:page]}")
       @products = Product.paginate(:page => params[:page], :per_page => 10)
     end
 
@@ -15,7 +15,7 @@ class Console::ProductsController < Console::ConsoleController
 
   def show
     begin
-      unless fragment_exist? "product-#{params[:id]}"
+      unless fragment_exist? "console-product-#{params[:id]}"
         @product = Product.find(params[:id])
       end
     rescue ActiveRecord::RecordNotFound
@@ -72,11 +72,13 @@ class Console::ProductsController < Console::ConsoleController
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to console_products_url }
-      format.json { head :no_content }
+    if @product.destroy
+      respond_to do |format|
+        format.html { redirect_to console_products_url, notice: "Product was successfully deleted." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to console_products_url, alert: "Product delete failed."
     end
   end
 end

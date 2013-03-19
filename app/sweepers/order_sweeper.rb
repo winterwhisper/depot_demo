@@ -13,7 +13,11 @@ class OrderSweeper < ActionController::Caching::Sweeper
   
   def expire_cache_for(order)
     expire_fragment(:orders_count)
-    expire_fragment(:all_orders)
+    pages = Order.all.count / 20 + 1
+    expire_fragment("all_orders-page")
+    for page in 1..pages
+      expire_fragment("all_orders-page#{page}")
+    end
     expire_fragment("order-#{order.id}")
   end
 end

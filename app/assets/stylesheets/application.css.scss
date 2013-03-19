@@ -40,6 +40,11 @@
 
 #store_side {
   width: 140px;
+  margin-top: 32px;
+  &.affix {
+    top: 32px;
+    margin-top: -32px;
+  }
   #user_links {
     margin-left: 12px;
     ul {

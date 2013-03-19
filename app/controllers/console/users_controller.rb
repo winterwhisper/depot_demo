@@ -3,7 +3,7 @@ class Console::UsersController < Console::ConsoleController
   cache_sweeper :user_sweeper, :only => [ :create, :update, :destroy ]
 
   def index
-    unless fragment_exist? :all_users
+    unless fragment_exist?("all_users-page#{params[:page]}")
       @users = User.paginate(:page => params[:page], :per_page => 20)
     end
 

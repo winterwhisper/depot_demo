@@ -12,7 +12,9 @@ class ProductsController < ApplicationController
 
   def show
     begin
-      @product = Product.find(params[:id])
+      unless fragment_exist? "product-#{params[:id]}"
+        @product = Product.find(params[:id])
+      end
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid product #{params[:id]}"
       redirect_to store_url, notice: 'Invalid product'

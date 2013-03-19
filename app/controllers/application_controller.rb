@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
+  def logged?
+    return current_user.present?
+  end
+
   def authorize(role)
     if current_user.nil?
       redirect_to login_url, notice: "Please log in"
@@ -16,6 +20,12 @@ class ApplicationController < ActionController::Base
       if current_user.role < Settings.roles.fetch(role.capitalize)
         redirect_to admin_index_url, notice: "You can`t access this page."
       end
+    end
+  end
+
+  def logged_in
+    if logged?
+      redirect_to store_url, alert: "Already logged in."
     end
   end
 

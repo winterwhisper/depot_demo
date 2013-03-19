@@ -3,7 +3,7 @@ class Console::OrdersController < Console::ConsoleController
   cache_sweeper :order_sweeper, :only => [ :create, :update, :destroy ]
   
   def index
-    unless fragment_exist? :all_orders
+    unless fragment_exist?("all_orders-page#{params[:page]}")
       @orders = Order.paginate(:page => params[:page], :per_page => 20)
     end
 

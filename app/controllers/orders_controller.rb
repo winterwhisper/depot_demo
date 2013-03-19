@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  cache_sweeper :order_sweeper, :only => :create
   # before_filter(except: [:new, :create]) { |c| c.authorize 'seller' }
 
   # def index

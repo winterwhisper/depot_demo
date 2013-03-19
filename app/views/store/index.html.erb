@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='span2'>
-    <div id='store_side' data-spy="affix">
+    <div id='store_side' data-spy="affix" data-offset-top="158">
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#">Books</a></li>
         <li><a href="#">Foods</a></li>
@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class='span10'>
-    <% cache(:store_list) do %>
+    <% cache("store_list-page#{params[:page]}") do %>
       <div id='list'>
         <% @products.each do |product| %>
           <div class="entry">
