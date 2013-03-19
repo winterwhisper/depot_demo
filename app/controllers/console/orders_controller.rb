@@ -1,8 +1,11 @@
 class Console::OrdersController < Console::ConsoleController
   before_filter { |c| c.authorize 'seller' }
+  cache_sweeper :order_sweeper, :only => [ :create, :update, :destroy ]
   
   def index
-    @orders = Order.paginate(:page => params[:page], :per_page => 20)
+    unless fragment_exist? :all_orders
+      @orders = Order.paginate(:page => params[:page], :per_page => 20)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +14,9 @@ class Console::OrdersController < Console::ConsoleController
   end
 
   def show
-    @order = Order.find(params[:id])
+    unless fragment_exist? "order-#{params[:id]}"
+      @order = Order.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

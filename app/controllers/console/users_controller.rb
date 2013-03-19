@@ -1,8 +1,11 @@
 class Console::UsersController < Console::ConsoleController
   before_filter { |c| c.authorize 'master' }
+  cache_sweeper :user_sweeper, :only => [ :create, :update, :destroy ]
 
   def index
-    @users = User.paginate(:page => params[:page], :per_page => 20)
+    unless fragment_exist? :all_users
+      @users = User.paginate(:page => params[:page], :per_page => 20)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +14,9 @@ class Console::UsersController < Console::ConsoleController
   end
 
   def show
-    @user = User.find(params[:id])
+    unless fragment_exist? "user-#{params[:id]}"
+      @user = User.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

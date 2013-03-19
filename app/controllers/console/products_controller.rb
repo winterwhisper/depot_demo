@@ -1,8 +1,11 @@
 class Console::ProductsController < Console::ConsoleController
   before_filter { |c| c.authorize 'seller' }
-  
+  cache_sweeper :product_sweeper, :only => [ :create, :update, :destroy ]
+
   def index
-    @products = Product.paginate(:page => params[:page], :per_page => 10)
+    unless fragment_exist? :all_products
+      @products = Product.paginate(:page => params[:page], :per_page => 10)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +14,9 @@ class Console::ProductsController < Console::ConsoleController
   end
 
   def show
-    @product = Product.find(params[:id])
+    unless fragment_exist? "product-#{params[:id]}"
+      @product = Product.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
