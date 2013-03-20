@@ -10,7 +10,7 @@
     <div class="navbar navbar-static-top navbar-inverse">
       <div class="navbar-inner">
         <div class='container'>
-          <%= link_to "Depot", "#", :class => 'brand' %>
+          <%= link_to "Depot", store_url(:host => request.domain), :class => 'brand' %>
           <% if current_user %>
             <ul class="nav">
               <% if params[:controller].split('/').last == 'home' %>

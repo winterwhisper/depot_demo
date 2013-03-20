@@ -12,7 +12,7 @@
       <dt>Email</dt>
       <dd><%= @order.email %></dd>
       <dt>Payment Type</dt>
-      <dd><%= @order.pay_type %></dd>
+      <dd><%= convert_payment_type_to_string(@order.pay_type) %></dd>
       <dt>Create At</dt>
       <dd><%= time_tag @order.created_at %></dd>
       <dt>Update At</dt>

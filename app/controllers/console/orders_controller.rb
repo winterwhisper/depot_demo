@@ -1,6 +1,7 @@
 class Console::OrdersController < Console::ConsoleController
   before_filter { |c| c.authorize 'seller' }
   cache_sweeper :order_sweeper, :only => [ :create, :update, :destroy ]
+  cache_sweeper :product_sweeper, :only => [ :create, :update, :destroy ]
   
   def index
     unless fragment_exist?("all_orders-page#{params[:page]}")
@@ -67,7 +68,15 @@ class Console::OrdersController < Console::ConsoleController
 
   def destroy
     @order = Order.find(params[:id])
-    @order.destroy
+    line_items = []
+    @order.line_items.each do |item|
+      line_items << item
+    end
+    if @order.destroy
+      line_items.each do |item|
+        item.product.update_attribute(:stock, item.product.stock + item.quantity)
+      end
+    end
 
     respond_to do |format|
       format.html { redirect_to console_orders_url }

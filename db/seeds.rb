@@ -23,7 +23,8 @@ Product.create(title: 'CoffeeScript(1st)',
               while writing clearer, cleaner, and safer code.
                   </p>}, 
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
-               price: 36.00)
+               price: 36.00, 
+               stock: 10)
 
 Product.create(title: 'Programming Ruby 1.9 & 2.0(1st)',
                description:
@@ -33,7 +34,8 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(1st)',
                     you should add Ruby to your toolbox.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
-               price: 49.95)
+               price: 49.95, 
+               stock: 10)
 Product.create(title: 'Rails Test Prescriptions(1st)',
                description: 
                 %{<p>
@@ -45,7 +47,8 @@ Product.create(title: 'Rails Test Prescriptions(1st)',
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
-               price: 34.95)
+               price: 34.95, 
+               stock: 10)
 Product.create(title: 'CoffeeScript(2nd)',
                description: 
                 %{<p>
@@ -56,7 +59,8 @@ Product.create(title: 'CoffeeScript(2nd)',
               while writing clearer, cleaner, and safer code.
                   </p>}, 
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
-               price: 36.00)
+               price: 36.00, 
+               stock: 10)
 Product.create(title: 'Programming Ruby 1.9 & 2.0(2nd)',
                description:
                 %{<p>
@@ -65,7 +69,8 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(2nd)',
                     you should add Ruby to your toolbox.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
-               price: 49.95)
+               price: 49.95, 
+               stock: 10)
 Product.create(title: 'Rails Test Prescriptions(2nd)',
                description: 
                 %{<p>
@@ -77,7 +82,8 @@ Product.create(title: 'Rails Test Prescriptions(2nd)',
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
-               price: 34.95)
+               price: 34.95, 
+               stock: 10)
 Product.create(title: 'CoffeeScript(3rd)',
                description: 
                 %{<p>
@@ -88,7 +94,8 @@ Product.create(title: 'CoffeeScript(3rd)',
               while writing clearer, cleaner, and safer code.
                   </p>}, 
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
-               price: 36.00)
+               price: 36.00, 
+               stock: 10)
 Product.create(title: 'Programming Ruby 1.9 & 2.0(3rd)',
                description:
                 %{<p>
@@ -97,7 +104,8 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(3rd)',
                     you should add Ruby to your toolbox.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
-               price: 49.95)
+               price: 49.95, 
+               stock: 10)
 Product.create(title: 'Rails Test Prescriptions(3rd)',
                description: 
                 %{<p>
@@ -109,7 +117,8 @@ Product.create(title: 'Rails Test Prescriptions(3rd)',
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
-               price: 34.95)
+               price: 34.95, 
+               stock: 10)
 Product.create(title: 'CoffeeScript(4th)',
                description: 
                 %{<p>
@@ -120,7 +129,8 @@ Product.create(title: 'CoffeeScript(4th)',
               while writing clearer, cleaner, and safer code.
                   </p>}, 
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/cs.jpg'))), 
-               price: 36.00)
+               price: 36.00, 
+               stock: 10)
 Product.create(title: 'Programming Ruby 1.9 & 2.0(4th)',
                description:
                 %{<p>
@@ -129,7 +139,8 @@ Product.create(title: 'Programming Ruby 1.9 & 2.0(4th)',
                     you should add Ruby to your toolbox.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/ruby.jpg'))), 
-               price: 49.95)
+               price: 49.95, 
+               stock: 10)
 Product.create(title: 'Rails Test Prescriptions(4th)',
                description: 
                 %{<p>
@@ -141,4 +152,5 @@ Product.create(title: 'Rails Test Prescriptions(4th)',
                     including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
                   </p>},
                image_url: (File.open(File.join(Rails.root, '/app/assets/images/rtp.jpg'))), 
-               price: 34.95)
+               price: 34.95, 
+               stock: 10)
