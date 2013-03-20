@@ -38,6 +38,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 gem 'annotate', ">=2.5.0"
 gem 'settingslogic'
+gem 'redis-rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
