@@ -5,7 +5,11 @@
 <center id='home-title'>System Info</center>
 
 <div id='sys-details'>
-  <div id='detail-row'>
+  <% if current_user.role == 2 %>
+    <div id='detail-row' style="width:610px; margin:0 auto;">
+  <% else %>
+    <div id='detail-row'>
+  <% end %>
     <% cache(:orders_count) do %>
       <div class='detail-block'>
         <i class="icon-file-alt"></i>
@@ -22,13 +26,15 @@
         </div>
       </div>
     <% end %>
-    <% cache(:users_count) do %>
-      <div class='detail-block'>
-        <i class="icon-user"></i>
-        <div class='detail-description'>
-          <%= @users_count %> users
+    <% if current_user.role == 3 %>
+      <% cache(:users_count) do %>
+        <div class='detail-block'>
+          <i class="icon-user"></i>
+          <div class='detail-description'>
+            <%= @users_count %> users
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Depot</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class='<%= controller.controller_name %>'>
+
+    <div class='container'>
+      <div id="banner">
+        <%= image_tag("logo.png") %>
+        <%= @page_title || "Pragmatic Bookshelf" %>
+      </div>
+      <div id="columns" class='row'>
+        <div class='span8'>
+          <div id="main">
+              <div class='title'>
+                  <h3>
+                    <%= page_title %>
+                  </h3>
+              </div>
+            <% if notice %>
+              <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= notice %>
+              </div>
+            <% end %>
+            <% if alert %>
+              <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= alert %>
+              </div>
+            <% end %>
+
+            <%= yield %>
+            
+          </div>
+        </div>
+        <div class='span4'>
+          <div id="side" data-spy="affix">
+            <% if current_user.nil? %>
+              <div id='user_links'>
+                <%= link_to 'signup', signup_path %> or
+                <%= link_to 'login', login_path %>
+              </div>
+              <% else %>
+              <div id='user_links'>
+                <%= link_to 'Logout', logout_path, method: :delete %>
+              </div>
+            <% end %>
+            <% if session[:count] != nil && session[:count] > 5 %>
+              <p id='counter'>You have access this page <%= pluralize(session[:count], "count") %>.</p>
+            <% end %>
+            <% unless current_user.nil? %>
+              <ul class="unstyled">
+                <li><%= link_to 'Orders', orders_path %></li>
+                <li><%= link_to 'Products', products_path %></li>
+                <li><%= link_to 'Users', users_path %></li>
+              </ul>
+            <% end %>
+            <p><%= time_tag Time.now %></p>
+            <% if @cart %>
+              <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+                <%= render @cart %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div id='footer'>
+        <center>Pragmatic Bookshelf</center>
+        <center>Coryright@2013</center>
+      </div>
+    </div>
+  </body>
+</html>

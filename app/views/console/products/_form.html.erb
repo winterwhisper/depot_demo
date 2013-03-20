@@ -7,6 +7,7 @@
   <%= f.input :image_url, :as => :file %>
   <%= f.input :image_url_cache, :as => :hidden %>
   <%= f.input :price, :as => :string, :required => true %>
+  <%= f.input :stock, :input_html => { :min => 0 } %>
   <div class="control-group">
     <div class='controls'>
       <%= f.button :submit %>

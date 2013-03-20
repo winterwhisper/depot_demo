@@ -42,6 +42,10 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
+    if product.stock <=0
+      redirect_to store_url, alert: "There`s no #{product.title} left."
+      return 
+    end
     @line_item = @cart.add_product(product.id)
 
     respond_to do |format|
@@ -73,6 +77,9 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item = LineItem.find(params[:id])
     @line_item.destroy
+    # if @line_item.destroy
+      # product.update_attribute(:stock, product.stock + @line_item.quantity)
+    # end
     @cart = current_cart
 
     respond_to do |format|
