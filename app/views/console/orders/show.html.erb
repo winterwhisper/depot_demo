@@ -18,6 +18,35 @@
       <dt>Update At</dt>
       <dd><%= time_tag @order.updated_at %></dd>
     </dl>
+    <div class="page-header">
+      <h3>Order Detail</h3>
+    </div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>title</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for line_item in @order.line_items %>
+          <tr>
+            <td><%= line_item.product.title %></td>
+            <td><%= line_item.quantity %></td>
+            <td><%= line_item.price %></td>
+            <td><%= number_to_currency(line_item.total_price) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><b>Total Price</b></td>
+          <td><%= number_to_currency(total_price(@order)) %></td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
 <% end %>
 

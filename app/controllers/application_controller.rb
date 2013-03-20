@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user
+  helper_method :current_user, :total_price
 
   protected
 
@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
     cart = Cart.create
     session[:cart_id] = cart.id
     cart
+  end
+
+  def total_price(order)
+    order.line_items.to_a.sum { |item| item.total_price }
   end
 
   # def count_access_times
