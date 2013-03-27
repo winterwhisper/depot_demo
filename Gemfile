@@ -11,6 +11,7 @@ gem 'mysql2'
 group :development do
   gem 'quiet_assets'
   gem 'pry'
+  gem 'pry-rails'
   gem 'pry-nav'
 end
 
